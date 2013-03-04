@@ -1,0 +1,39 @@
+Purpose/Overview:
+	The purpose of this game is to get through Maku Road (The first "dungeon" in Legend of Zelda: Oracle of Ages) by controlling Link. Move with the arrow keys and attack with Z. Try to solve puzzles to unlock doors by pushing blocks.
+	ALSO: ALUDRA REALLY SUCKS AT DEALING WITH CURSES. I SUGGEST RUNNING THIS ON UBUNTU, SO PARALLEL05 OR SOMETHING LIKE THAT.
+
+Requirements:
+	AND I QUOTE:
+	    Users must be able to "play" your game. That means utilizing the curses capability for the keyboard to give commands, and the curses capability to draw to locations on the screen. By interacting, they must have to do something to get points. It can be running into your moving items, avoiding the moving items, etc. This is to be done by moving your character up and down, or side to side, or both. Whatever makes sense for your game.
+    You must have at least 3 moving "things". Each different moving thing is to be represented by a different single character.
+    You can have up to 2 things that don't move. These things must do something when the character gets close. They can explode, move away, etc. If it doesn't make sense to have non-moving things in your game, replace them with 2 more things that move.
+    You must display the player's score in your game window and the number of lives remaining.
+    A player must have a finite amount of lives. You may have an invincible mode, but that cannot be the only game mode. When a player fails to kill/avoid something, they are to lose a life. Have the game do something appropriate when a player dies. Also allow for restarting the game.
+    Your scrolling items can all move the same way, and the same speed, for this first version.
+	IN OTHER WORDS I'M MAKING A GAME
+
+Classes:
+	Besides the main class, one class for each object in each room all extending a tile superclass. Examples include: Torch, block, and door.
+	
+Global Data:
+	WE'RE GOING FROM NOTHING GLOBAL TO EVERYTHING GLOBAL~ BECAUSE OF ALL THE FUNCTIONS AND ALL THE DATA THAT NEEDS TO BE PASSED AROUND, GLOBAL VARIABLES ARE THE BEST WAY TO DO IT, SO WE'RE GLOBALING EVERYTHING. ANY VARIABLE THAT'S NOT GLOBAL IS MOST LIKELY JUST A TEMPORARY VARIABLE.
+
+High-level Architecture:
+	I've got arrays holding different objects that will get read and drawn. Everything important is located in the map*.in files.
+
+UI:
+	LINK IS RUNNING AROUND AS AN ASCII CHARACTER <O AND HE'S SOLVING PUZZLES AND HE'S KILLING ENEMIES AND HE'S AVOIDING HOLES AND HE'S FLIPPING SWITCHES. ARROW KEYS TO MOVE. Z TO SWING SWORD.
+
+Test Cases:
+	NONE. LIKE ALL GOOD GAMES, NOTHING GETS PROPERLY TESTED. ANY GLITCHES AND ERRORS IN THE GAME ARE JUST UNIQUE SKILLS AND TRICKS THAT THE PLAYER CAN TAKE ADVANTAGE OF IF THEY'RE SKILLED ENOUGH.
+
+Functions:
+	Every extension of Tile has a constructor and a string draw() function that allows it to be drawn on the map.
+	OTHER FUNCTIONS INCLUDE:
+		drawTile() - Draws the specified tile on the map at the specified point.
+		init() - Initializes all variables, map data, etc.
+		draw() - Does everything related to Link and his movement, really.
+		checkChange() - Checks for changing rooms
+		damage() - Damages Link and returns him to the start of the room
+		initEnemies() - Initializes the enemies in different rooms
+		moveEns() - Moves enemies about.
